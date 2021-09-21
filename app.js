@@ -1,6 +1,6 @@
-const fs = require('fs');
+//const fs = require('fs');
 const inquirer = require('inquirer');
-const generatePage = require('./src/page-template');
+//const generatePage = require('./src/page-template');
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -87,7 +87,7 @@ Add a New Project
       {
         type: 'checkbox',
         name: 'languages',
-        message: 'What did you this project with? (Check all that apply)',
+        message: 'What did you create this project with? (Check all that apply)',
         choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
       },
       {
@@ -129,7 +129,14 @@ Add a New Project
 promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    console.log(portfolioData);
+    //console.log(portfolioData);
+     const pageHTML = generatePage(portfolioData);
+
+    // fs.writeFile('./index.html', pageHTML, err => {
+    //   if (err) throw new Error(err);
+
+    //   console.log('Page created! Check out index.html in this directory to see it!');
+    // 
     // will be uncommented in lesson 4
     // const pageHTML = generatePage(portfolioData);
     // fs.writeFile('./index.html', pageHTML, err => {
